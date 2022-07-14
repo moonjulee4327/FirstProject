@@ -2,14 +2,13 @@ package student;
 
 public class StudentVO {
 	//필드
-	private int stuNo; //학생번호
-	private String stuDep; //학과번호
-	private String stuNm; //학생명 
-	private String stuEm; //이메일
-	private String stuPneNo; //전화번호
-	private int stuGrd; //학년
-	private String stuAcdSt; //학적
-	private String stuBir; //생년월일
+	private int stuNo;
+	private String stuDep;
+	private String stuEm;
+	private String stuPneNo;
+	private int stuGrd;
+	private String stuAcdSt;
+	private String stuBir;
 	
 	//생성자
 	public StudentVO() {}
@@ -30,20 +29,11 @@ public class StudentVO {
 	public void setStuDep(String stuDep) {
 		this.stuDep = stuDep;
 	}
-	
-	public String getStuNm() {
-		return stuNm;
-	}
-	
-	public void setStuNm(String stuNm) {
-		this.stuNm = stuNm;
-	}
 
 	public String getStuEm() {
 		return stuEm;
 	}
 
-	
 	public void setStuEm(String stuEm) {
 		this.stuEm = stuEm;
 	}
@@ -82,10 +72,10 @@ public class StudentVO {
 
 	@Override
 	public String toString() {
-		return "StudentVO [stuNo=" + stuNo + ", stuDep=" + stuDep + ", stuNm=" + stuNm + ", stuEm=" + stuEm
-				+ ", stuPneNo=" + stuPneNo + ", stuGrd=" + stuGrd + ", stuAcdSt=" + stuAcdSt + ", stuBir=" + stuBir
-				+ "]";
+		return "StudentVO [stuNo=" + stuNo + ", stuDep=" + stuDep + ", stuEm=" + stuEm + ", stuPneNo=" + stuPneNo
+				+ ", stuGrd=" + stuGrd + ", stuAcdSt=" + stuAcdSt + ", stuBir=" + stuBir + "]";
 	}
-
+	
+	
 	
 }
