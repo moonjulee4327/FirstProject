@@ -1,0 +1,23 @@
+package common;
+
+public enum StudentMenu {
+	HOME(-1, "------------------------------------------------\n"
+    		+ "1. 수강신청	\t2. 2. 전체성적확인\t 3. 수강내역조회\n번호를 입력하세요>> "),
+	LOGIN(1,"");
+	
+	private final int menu;
+    private final String menuString;
+
+	StudentMenu(int menu, String menuString) {
+		this.menu = menu;
+		this.menuString = menuString;
+	}
+	
+	public int getMenu() {
+        return menu;
+    }
+
+    public String getMenuString() {
+        return menuString;
+    }
+}

@@ -1,0 +1,14 @@
+
+public class Main {
+	static StudentPortalView view = new StudentPortalView();
+	
+	public static void main(String[] args) {
+		new Main().run();
+	}
+	
+	public static void run() {
+		while(true) {
+			view.sign()
+		}
+	}
+}
