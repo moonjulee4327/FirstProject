@@ -20,8 +20,8 @@ public class ProfessorDAO {
 	public int selectProfessor(ProfessorVO vo) {
 		try {
 			DriverManager.registerDriver(new OracleDriver());
-			Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@1.212.157.146:1521:xe",
-					"StudentPoral", "java");
+			Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.15:1521:xe",
+					"StudentPortal", "java");
 			StringBuilder builder = new StringBuilder();
 			builder.append(" SELECT              ");
 			builder.append("     pro_nm          ");

@@ -1,0 +1,96 @@
+package student;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import oracle.jdbc.driver.OracleDriver;
+
+public class StudentDAO {
+	//필드
+	private static StudentDAO studentDAO = new StudentDAO();
+	
+	//생성자
+	private StudentDAO() {}
+	
+	//메소드
+	public static StudentDAO getInstance() {
+		return studentDAO;
+	}
+	
+	public int selectStudent(StudentVO vo) {
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			
+			Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@1.212.157.146:1521:xe", "StudentPoral", "java");
+			StringBuilder builder = new StringBuilder();
+			builder.append(" SELECT");
+			builder.append("     stu_no,");
+			builder.append("     stu_nm,");
+			builder.append("     stu_em,");
+			builder.append("     stu_pne_no,");
+			builder.append("     stu_grd,");
+			builder.append("     stu_acd_st,");
+			builder.append("     dep_nm,");
+			builder.append("     stu_bir");
+			builder.append(" FROM");
+			builder.append("     stu,");
+			builder.append("     dep");
+			builder.append(" WHERE");
+			builder.append("     stu_dep = dep_no");
+			
+			String sql = builder.toString();
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setObject(0, statement);
+			
+			ResultSet resultSet = statement.executeQuery();
+			
+			
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return 0;
+		
+	}
+	
+	public int insertStudent(StudentVO vo) {
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			
+			Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@1.212.157.146:1521:xe", "StudentPoral", "java");
+			StringBuilder builder = new StringBuilder();
+			builder.append(" SELECT");
+			builder.append("     stu_no,");
+			builder.append("     stu_nm,");
+			builder.append("     stu_em,");
+			builder.append("     stu_pne_no,");
+			builder.append("     stu_grd,");
+			builder.append("     stu_acd_st,");
+			builder.append("     dep_nm,");
+			builder.append("     stu_bir");
+			builder.append(" FROM");
+			builder.append("     stu,");
+			builder.append("     dep");
+			builder.append(" WHERE");
+			builder.append("     stu_dep = dep_no");
+			
+			String sql = builder.toString();
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setObject(0, statement);
+			
+			ResultSet resultSet = statement.executeQuery();
+			
+			
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return 0;
+		
+	}
+	
+}

@@ -1,0 +1,87 @@
+package lecture;
+
+import java.io.InputStream;
+import java.io.Reader;
+import java.math.BigDecimal;
+import java.net.URL;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.Clob;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.NClob;
+import java.sql.Ref;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.RowId;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.SQLXML;
+import java.sql.Statement;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
+
+import oracle.jdbc.driver.OracleDriver;
+
+public class LectureDAO {
+	//필드
+	private static LectureDAO lectureDAO = new LectureDAO();
+	
+	//생성자
+	private LectureDAO() {}
+	
+	//메소드
+	public static LectureDAO getInstance() {
+		return lectureDAO;
+	}
+	
+	public List<LectureVO> selectLecture() throws Exception {
+		
+		DriverManager.registerDriver(new OracleDriver());
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.15:1521:xe", "StudentPortal", "java");
+		Statement statement = connection.createStatement();
+		StringBuilder builder = new StringBuilder();
+		builder.append("SELECT ");
+		builder.append("    lec_no, ");
+		builder.append("    yr, ");
+		builder.append("    sem, ");
+		builder.append("    sub_nm, ");
+		builder.append("    dep_nm, ");
+		builder.append("    lec_tm, ");
+		builder.append("    lec_wk ");
+		builder.append("FROM ");
+		builder.append("    lec, ");
+		builder.append("    sub, ");
+		builder.append("    dep ");
+		builder.append("WHERE ");
+		builder.append("    sub_no = lec_sub ");
+		builder.append("    AND   lec_dep = dep_no ");
+		
+		String sql = builder.toString();
+		ResultSet resultSet = statement.executeQuery(sql);
+		
+		List<LectureVO> list = new ArrayList<>();
+		
+		while(resultSet.next()) {
+			int lecNo = resultSet.getInt("lec_no");
+			String lecSub = resultSet.getString("");
+			String lecDep = resultSet.getString("");
+			String yr = resultSet.getString("");
+			int sem = resultSet.getInt("");
+			String lecTm = resultSet.getString("");
+			String lecWk = resultSet.getString("");
+			list.add(new LectureVO(lecNo, yr, sem, lecDep, lecSub, lecTm, lecWk));
+		}
+		resultSet.close();
+		statement.close();
+		connection.close();
+		
+		return list;
+	}
+	
+}

@@ -2,31 +2,31 @@ package sign;
 
 public class SignVO {
 	//필드
-	private int id;
-	private int pw;
+	private String id;
+	private String pw;
 	
 	//생성자
 	public SignVO() {}
 
-	public SignVO(int id, int pw) {
+	public SignVO(String id, String pw) {
 		this.id = id;
 		this.pw = pw;
 	}
 	
 	//메소드
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getPw() {
+	public String getPw() {
 		return pw;
 	}
 
-	public void setPw(int pw) {
+	public void setPw(String pw) {
 		this.pw = pw;
 	}
 

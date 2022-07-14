@@ -1,5 +1,7 @@
 package student;
 
+import java.util.List;
+
 public class StudentService {
 	//필드
 	private static StudentService studentService = new StudentService();
@@ -13,8 +15,25 @@ public class StudentService {
 		return studentService;
 	}
 	
-	public int select(StudentVO vo) {
-		return studentDAO.select(vo);
+	public List<StudentVO> selectStudent() {
+		
+		try {
+			return studentDAO.selectStudent();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
+	
+	public int insertStudent(StudentVO vo) {
+		try {
+			return studentDAO.insertStudent(vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	
 	
 }

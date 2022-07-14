@@ -1,5 +1,7 @@
 package student;
 
+import java.util.List;
+
 public class StudentController {
 	//필드
 	private static StudentController studentController = new StudentController();
@@ -13,8 +15,11 @@ public class StudentController {
 		return studentController;
 	}
 	
-	public int select(StudentVO vo) {
-		return studentService.select(vo);
+	public List<StudentVO> selectStudent() {
+		return studentService.selectStudent();
 	}
 	
+	public int insertStudent(StudentVO vo) {
+		return studentService.insertStudent(vo);
+	}
 }

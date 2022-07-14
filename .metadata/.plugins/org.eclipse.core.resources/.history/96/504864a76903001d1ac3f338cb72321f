@@ -1,0 +1,16 @@
+package lecture;
+
+public class LectureDAO {
+	//필드
+	private static LectureDAO lectureDAO = new LectureDAO();
+	
+	//생성자
+	private LectureDAO() {}
+	
+	//메소드
+	public static LectureDAO getInstance() {
+		return lectureDAO;
+	}
+
+	
+}

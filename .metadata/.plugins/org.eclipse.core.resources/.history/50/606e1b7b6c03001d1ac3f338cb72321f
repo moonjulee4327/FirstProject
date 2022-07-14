@@ -1,0 +1,37 @@
+package lecture;
+
+public class LectureVO {
+	//필드
+	private int lecNo;
+	private String lecSub;
+	private String lecDep;
+	private String yr;
+	private int sem;
+	private String lecTm;
+	private String lecWk;
+	
+	//생성자
+	public LectureVO() {}
+	
+	
+
+	public LectureVO(int lecNo, String lecSub, String lecDep, String yr, int sem, String lecTm, String lecWk) {
+		this.lecNo = lecNo;
+		this.lecSub = lecSub;
+		this.lecDep = lecDep;
+		this.yr = yr;
+		this.sem = sem;
+		this.lecTm = lecTm;
+		this.lecWk = lecWk;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return String.format("%s \t %s \t %s \t %s \t %s \t %s \t %s \t", lecNo, lecSub, lecDep, yr, sem, lecTm, lecWk);
+	}
+	
+	
+	
+}

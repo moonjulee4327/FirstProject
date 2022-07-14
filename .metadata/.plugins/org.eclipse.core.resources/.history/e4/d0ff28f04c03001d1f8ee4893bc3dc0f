@@ -1,0 +1,78 @@
+import java.util.List;
+import java.util.Scanner;
+
+import common.LoginMenu;
+import common.ScannerUtil;
+import sign.SignController;
+import sign.SignVO;
+import student.StudentController;
+import student.StudentVO;
+
+public class Main {
+	static StudentPortalView view = new StudentPortalView();
+	static SignController signController = SignController.getInstance();
+	static StudentController studentController = StudentController.getInstance();
+	private static SignVO session = new SignVO();
+	public static void main(String[] args) {
+//		new Main().run();
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("ID: ");
+		String id = scanner.nextLine();
+		System.out.print("PW: ");
+		String pw = scanner.nextLine();
+		
+		int result = signController.sign(new SignVO(id, pw));
+		switch(result) {
+		case 1:
+			System.out.println("학생 로그인 성공");
+			break;
+		case 2:
+			System.out.println("교수 로그인 성공");
+			break;
+		case 3:
+			System.out.println("관리자 로그인 성공");
+			System.out.println("1.학생조회 2.학생등록");
+			int num = ScannerUtil.nextInt();
+			if(num == 1) {
+			//고친 것
+			List<StudentVO> students = studentController.selectStudent();
+			for(StudentVO vo : students) {
+				System.out.println(vo);
+			}
+			}else if(num ==2) {
+				studentController.insertStudent(new StudentVO());
+			}
+			break;
+			default:
+				System.out.println("로그인 실패");
+		}
+	}
+	
+	
+	public static void run() {
+		Program:
+		while(true) {
+			LoginMenu login = LoginMenu.HOME;
+			System.out.println(login.getMenuString());
+			switch(login) {
+			case HOME:
+				view.sign(signController);
+				break;
+			case EXIT:
+				break Program;
+				default:
+					System.out.println("유효하지 않은 입력입니다.");
+					break;
+			}
+		}
+	}
+
+	public static SignVO getSession() {
+		return session;
+	}
+
+	public static void setSession(SignVO session) {
+		Main.session = session;
+	}
+
+}

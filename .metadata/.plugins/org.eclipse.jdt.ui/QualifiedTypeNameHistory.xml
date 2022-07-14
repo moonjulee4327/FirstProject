@@ -5,4 +5,20 @@
     <fullyQualifiedTypeName name="sign.SignController"/>
     <fullyQualifiedTypeName name="StudentPortalView"/>
     <fullyQualifiedTypeName name="common.LoginMenu"/>
+    <fullyQualifiedTypeName name="student.StudentController"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="student.StudentVO"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="common.ScannerUtil"/>
+    <fullyQualifiedTypeName name="lecture.LectureService"/>
+    <fullyQualifiedTypeName name="lecture.LectureDAO"/>
+    <fullyQualifiedTypeName name="java.lang.module.ModuleDescriptor.Builder"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="lecture.LectureController"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="lecture.LectureVO"/>
+    <fullyQualifiedTypeName name="oracle.jdbc.driver.OracleDriver"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
 </qualifiedTypeNameHistroy>

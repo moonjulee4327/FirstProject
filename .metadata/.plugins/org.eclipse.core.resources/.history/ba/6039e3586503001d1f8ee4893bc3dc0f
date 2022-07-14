@@ -1,0 +1,17 @@
+package lecture;
+
+public class LectureService {
+	//필드
+	private static LectureService lectureService = new LectureService();
+	private LectureDAO lectureDAO = LectureDAO.getInstance();
+	//생성자
+	LectureService() {}
+	
+	//메소드
+	public static LectureService getInstance() {
+		return lectureService;
+	}
+	
+	
+	
+}

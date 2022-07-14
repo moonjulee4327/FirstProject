@@ -1,7 +1,9 @@
-content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="StudentPortalView"><rhs name\="StudentPortalView"/></lhs></history>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="StudentPortalView"><rhs name\="StudentPortalView"/></lhs><lhs name\="student.StudentVO"><rhs name\="student.StudentVO"/></lhs><lhs name\="student.StudentController"><rhs name\="student.StudentController"/></lhs><lhs name\="lecture.LectureDAO"><rhs name\="lecture.LectureDAO"/></lhs><lhs name\="lecture.LectureController"><rhs name\="lecture.LectureController"/></lhs><lhs name\="java.lang.CharSequence"><rhs name\="java.lang.StringBuilder"/></lhs><lhs name\="java.lang.AbstractStringBuilder"><rhs name\="java.lang.StringBuilder"/></lhs><lhs name\="java.lang.Appendable"><rhs name\="java.lang.StringBuilder"/></lhs><lhs name\="lecture.LectureVO"><rhs name\="lecture.LectureVO"/></lhs></history>
 content_assist_number_of_computers=12
 eclipse.preferences.version=1
 markOccurrences=false
+org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.internal.ui.navigator.librariesnode=true
 org.eclipse.jdt.ui.formatterprofiles.version=22
 spelling_locale_initialized=true
 typefilter_migrated_2=true
