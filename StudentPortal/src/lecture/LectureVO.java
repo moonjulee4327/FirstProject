@@ -9,7 +9,11 @@ public class LectureVO {
 	private int sem;
 	private String lecTm;
 	private String lecWk;
-	
+	//쿼리로 인한 증가
+	private String proNm;
+	private String rmNm;
+	private String countAdu;
+
 	//생성자
 	public LectureVO() {}
 	
@@ -22,7 +26,21 @@ public class LectureVO {
 		this.lecTm = lecTm;
 		this.lecWk = lecWk;
 	}
-	
+
+	public LectureVO(int lecNo, String lecSub, String lecDep, String proNm, String yr, int sem, String lecTm, String lecWk,
+			 String rmNm, String countAdu) {
+		this.lecNo = lecNo;
+		this.lecSub = lecSub;
+		this.lecDep = lecDep;
+		this.yr = yr;
+		this.sem = sem;
+		this.lecTm = lecTm;
+		this.lecWk = lecWk;
+		this.proNm = proNm;
+		this.rmNm = rmNm;
+		this.countAdu = countAdu;
+	}
+
 	//메소드
 	public int getLecNo() {
 		return lecNo;
@@ -79,12 +97,34 @@ public class LectureVO {
 	public void setLecWk(String lecWk) {
 		this.lecWk = lecWk;
 	}
+	
+	public String getProNm() {
+		return proNm;
+	}
+
+	public void setProNm(String proNm) {
+		this.proNm = proNm;
+	}
+
+	public String getRmNm() {
+		return rmNm;
+	}
+
+	public void setRmNm(String rmNm) {
+		this.rmNm = rmNm;
+	}
+
+	public String getCountAdu() {
+		return countAdu;
+	}
+
+	public void setCountAdu(String countAdu) {
+		this.countAdu = countAdu;
+	}
 
 	@Override
 	public String toString() {
-		return String.format("%s \t %s \t %s \t %s \t %s \t %s \t %s \t", lecNo, lecSub, lecDep, yr, sem, lecTm, lecWk);
+		return String.format("%s \t %s \t %s \t %s \t %s \t %s \t %s \t %s \t", lecNo, lecSub, lecDep, yr, sem, lecTm, lecWk, countAdu);
 	}
-	
-	
 	
 }

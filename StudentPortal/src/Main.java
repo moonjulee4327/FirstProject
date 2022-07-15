@@ -28,6 +28,27 @@ public class Main {
 		switch(result) {
 		case 1:
 			System.out.println("학생 로그인 성공");
+			System.out.println("1.수강신청 2.전체성적확인 3.수강내역조회");
+			int num = scanner.nextInt();
+			if(num == 1) {
+				System.out.println("1.수강 가능한 강의 조회 2.수강신청");
+				int num1 = scanner.nextInt();
+				if(num1 == 1) {
+					//수강 가능한 강의 조회
+					List<LectureVO> audSelects = lectureController.audSelect();
+					for(LectureVO vo : audSelects) {
+						System.out.println(vo);
+					}
+					
+					
+				}else if(num1 == 2) {
+					//수강신청
+				}
+			}else if(num == 2) {
+				
+			}else if(num == 3) {
+				
+			}
 			break;
 		case 2:
 			System.out.println("교수 로그인 성공");
@@ -75,9 +96,38 @@ public class Main {
 			}else if(num1 == 2) {
 				System.out.println("교수 드가자");
 			}else if(num1 == 3) {
-				List<LectureVO> lectures = lectureController.selectLecture();
-				for(LectureVO vo : lectures) {
-					System.out.println(vo);
+				System.out.println("1.강의 조회 2.강의개설");
+				int num3 = scanner.nextInt();
+				if(num3 == 1) {
+					List<LectureVO> lectures = lectureController.selectLecture();
+					for(LectureVO vo : lectures) {
+						System.out.println(vo);
+					}
+				}else if(num3 == 2) {
+					Scanner scanner3 = new Scanner(System.in);
+					System.out.print("강의번호를 입력하시오 : ");
+					int lecNo = scanner3.nextInt();
+					System.out.print("연도를 입력하시오 : ");
+					String yr = scanner3.next();
+					System.out.print("학기를 입력하시오 : ");
+					int sem = scanner3.nextInt();
+					System.out.print("과목번호를 입력하시오 : ");
+					String lecSub= scanner3.next();
+					System.out.print("학과번호를 입력하시오 : ");
+					String lecDep = scanner3.next();
+					System.out.print("오전/오후 수업을 입력하시오 : ");
+					String lecTm = scanner3.next();
+					System.out.print("강의 개설 요일을 입력하시오 : ");
+					String lecWk = scanner3.next();
+
+					int LectureInsert = lectureController.LectureInsert(new LectureVO(lecNo, yr, sem, lecSub, lecDep, lecTm, lecWk));
+					if(LectureInsert == 1) {
+						System.out.println("등록 성공~");
+					}else {
+						System.out.println("등록 실패!");
+					}
+					scanner3.close();
+				
 				}
 			}
 			break;

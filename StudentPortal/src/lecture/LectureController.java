@@ -18,4 +18,15 @@ public class LectureController {
 	public List<LectureVO> selectLecture() {
 		return lectureService.selectLecture();
 	}
+	
+	public int LectureInsert(LectureVO vo) {
+		return lectureService.LectureInsert(vo);
+	}
+	public List<LectureVO> audSelect() {
+		return lectureService.audSelect();	
+	}	
+	public int audInsert(LectureVO vo) {
+		return lectureService.audInsert(vo);
+	}	
+		
 }

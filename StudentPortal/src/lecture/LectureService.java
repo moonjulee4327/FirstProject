@@ -22,5 +22,31 @@ public class LectureService {
 		}
 	}
 	
+	public int LectureInsert(LectureVO vo) {
+		try {
+			return lectureDAO.insertLecture(vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
 	
+	public List<LectureVO> audSelect() {
+		try {
+			return lectureDAO.audSelect();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public int audInsert(LectureVO vo) {
+		try {
+			return lectureDAO.audInsert(vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
 }

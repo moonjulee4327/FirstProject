@@ -1,0 +1,130 @@
+package lecture;
+
+import java.io.InputStream;
+import java.io.Reader;
+import java.math.BigDecimal;
+import java.net.URL;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.Clob;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.NClob;
+import java.sql.PreparedStatement;
+import java.sql.Ref;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.RowId;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.SQLXML;
+import java.sql.Statement;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
+
+import oracle.jdbc.driver.OracleDriver;
+
+public class LectureDAO {
+	//필드
+	private static LectureDAO lectureDAO = new LectureDAO();
+	
+	//생성자
+	private LectureDAO() {}
+	
+	//메소드
+	public static LectureDAO getInstance() {
+		return lectureDAO;
+	}
+	
+	public List<LectureVO> selectLecture() throws Exception {
+		
+		DriverManager.registerDriver(new OracleDriver());
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.15:1521:xe", "StudentPortal", "java");
+		Statement statement = connection.createStatement();
+		StringBuilder builder = new StringBuilder();
+		builder.append("SELECT ");
+		builder.append("    lec_no, ");
+		builder.append("    yr, ");
+		builder.append("    sem, ");
+		builder.append("    sub_nm, ");
+		builder.append("    dep_nm, ");
+		builder.append("    lec_tm, ");
+		builder.append("    lec_wk ");
+		builder.append("FROM ");
+		builder.append("    lec, ");
+		builder.append("    sub, ");
+		builder.append("    dep ");
+		builder.append("WHERE ");
+		builder.append("    sub_no = lec_sub ");
+		builder.append("    AND   lec_dep = dep_no ");
+		
+		String sql = builder.toString();
+		ResultSet resultSet = statement.executeQuery(sql);
+		
+		List<LectureVO> list = new ArrayList<>();
+		
+		while(resultSet.next()) {
+			int lecNo = resultSet.getInt("lec_no");
+			String yr = resultSet.getString("yr");
+			int sem = resultSet.getInt("sem");
+			String lecSub = resultSet.getString("sub_nm");
+			String lecDep = resultSet.getString("dep_nm");
+			String lecTm = resultSet.getString("lec_tm");
+			String lecWk = resultSet.getString("lec_wk");
+			list.add(new LectureVO(lecNo, yr, sem, lecDep, lecSub, lecTm, lecWk));
+		}
+		resultSet.close();
+		statement.close();
+		connection.close();
+		
+		return list;
+	}
+	
+	public int insertLecture(LectureVO vo) throws Exception {
+		
+		DriverManager.registerDriver(new OracleDriver()); 
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.15:1521:xe", "StudentPortal", "java");
+		StringBuilder builder = new StringBuilder();
+		builder.append("INSERT INTO lec ( ");
+		builder.append("    lec_no, ");
+		builder.append("    yr, ");
+		builder.append("    sem, ");
+		builder.append("    lec_sub, ");
+		builder.append("    lec_dep, ");
+		builder.append("    lec_tm, ");
+		builder.append("    lec_wk ");
+		builder.append(") VALUES ( ");
+		builder.append("    ?, ");
+		builder.append("    ?, ");
+		builder.append("    ?, ");
+		builder.append("    ?, ");
+		builder.append("    ?, ");
+		builder.append("    ?, ");
+		builder.append("    ? ");
+		builder.append(") ");
+		
+		String sql = builder.toString();
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setInt(1,vo.getLecNo());
+		statement.setString(2,vo.getYr());
+		statement.setInt(3,vo.getSem());
+		statement.setString(4,vo.getLecSub());
+		statement.setString(5,vo.getLecDep());
+		statement.setString(6,vo.getLecTm());
+		statement.setString(7,vo.getLecWk());
+		
+		int executeUpdate = statement.executeUpdate();
+		statement.close();
+		connection.close();
+		
+		return executeUpdate;
+	}
+	
+	
+	
+}
