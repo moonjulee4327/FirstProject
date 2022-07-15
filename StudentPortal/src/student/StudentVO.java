@@ -2,19 +2,19 @@ package student;
 
 public class StudentVO {
 	//필드
-	private int stuNo;
+	private String stuNo;
 	private String stuDep;
 	private String stuNm;
 	private String stuEm;
 	private String stuPneNo;
-	private int stuGrd;
+	private String stuGrd;
 	private String stuAcdSt;
 	private String stuBir;
 	
 	//생성자
 	public StudentVO() {}
 	
-	public StudentVO(int stuNo, String stuNm, String stuEm, String stuPneNo, int stuGrd, String stuAcdSt, String stuDep,
+	public StudentVO(String stuNo, String stuNm, String stuEm, String stuPneNo, String stuGrd, String stuAcdSt, String stuDep,
 			String stuBir) {
 		this.stuNo = stuNo;
 		this.stuNm = stuNm;
@@ -27,11 +27,11 @@ public class StudentVO {
 		}
 
 	//메소드
-	public int getStuNo() {
+	public String getStuNo() {
 		return stuNo;
 	}
 
-	public void setStuNo(int stuNo) {
+	public void setStuNo(String stuNo) {
 		this.stuNo = stuNo;
 	}
 	
@@ -69,11 +69,11 @@ public class StudentVO {
 		this.stuPneNo = stuPneNo;
 	}
 
-	public int getStuGrd() {
+	public String getStuGrd() {
 		return stuGrd;
 	}
 
-	public void setStuGrd(int stuGrd) {
+	public void setStuGrd(String stuGrd) {
 		this.stuGrd = stuGrd;
 	}
 

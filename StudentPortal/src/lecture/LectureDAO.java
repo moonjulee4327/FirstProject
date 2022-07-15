@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,9 +50,9 @@ public class LectureDAO {
 		List<LectureVO> list = new ArrayList<>();
 		
 		while(resultSet.next()) {
-			int lecNo = resultSet.getInt("lec_no");
+			String lecNo = resultSet.getString("lec_no");
 			String yr = resultSet.getString("yr");
-			int sem = resultSet.getInt("sem");
+			String sem = resultSet.getString("sem");
 			String lecSub = resultSet.getString("sub_nm");
 			String lecDep = resultSet.getString("dep_nm");
 			String lecTm = resultSet.getString("lec_tm");
@@ -92,9 +91,9 @@ public class LectureDAO {
 		
 		String sql = builder.toString();
 		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setInt(1,vo.getLecNo());
+		statement.setString(1,vo.getLecNo());
 		statement.setString(2,vo.getYr());
-		statement.setInt(3,vo.getSem());
+		statement.setString(3,vo.getSem());
 		statement.setString(4,vo.getLecSub());
 		statement.setString(5,vo.getLecDep());
 		statement.setString(6,vo.getLecTm());
@@ -148,12 +147,12 @@ public class LectureDAO {
 		
 		ArrayList<LectureVO> list = new ArrayList<>();
 		while(resultSet.next()) {
-			int lecNo = resultSet.getInt("lec_no");
+			String lecNo = resultSet.getString("lec_no");
 			String lecSub = resultSet.getString("sub_nm");
 			String lecDep = resultSet.getString("dep_nm");
 			String proNm = resultSet.getString("pro_nm");
 			String yr = resultSet.getString("yr");
-			int sem = resultSet.getInt("sem");
+			String sem = resultSet.getString("sem");
 			String lecTm = resultSet.getString("lec_tm");
 			String lecWk = resultSet.getString("lec_wk");
 			String rmNm = resultSet.getString("rm_nm");
@@ -169,7 +168,7 @@ public class LectureDAO {
 		return list;
 	}
 	
-	public int audInsert(LectureVO vo) throws Exception {
+	public int audInsert(int vo, SignVO session) throws Exception {
 		DriverManager.registerDriver(new OracleDriver());
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.15:1521:xe", "StudentPortal", "java");
 		StringBuilder builder = new StringBuilder();
@@ -180,19 +179,19 @@ public class LectureDAO {
 		builder.append(" ) VALUES ( ");
 		builder.append("     ?, ");
 		builder.append("     ?, ");
-		builder.append("     aud_seq.nextval, ");
+		builder.append("     aud_seq.nextval ");
 		builder.append(" ) ");
-
+		
 		String sql = builder.toString();
 		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setObject(1, vo.getLecSub());
-		statement.setObject(2, vo.get);
+		statement.setObject(1, vo);
+		statement.setObject(2, session.getId());
 		
 		int executeQuery = statement.executeUpdate();
 		statement.close();
 		connection.close();
 		
-		return 0;
+		return executeQuery;
 	}
 	
 }

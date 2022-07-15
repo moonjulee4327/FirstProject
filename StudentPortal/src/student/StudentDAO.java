@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,11 +48,11 @@ public class StudentDAO {
 			
 			ArrayList<StudentVO> list = new ArrayList<>();
 			while(resultSet.next()) {
-				int stuNo = resultSet.getInt("stu_no");
+				String stuNo = resultSet.getString("stu_no");
 				String stuNm = resultSet.getString("stu_nm");
 				String stuEm = resultSet.getString("stu_em");
 				String stuPneNo = resultSet.getString("stu_pne_no");
-				int stuGrd = resultSet.getInt("stu_grd");
+				String stuGrd = resultSet.getString("stu_grd");
 				String stuAcdSt = resultSet.getString("stu_acd_st");
 				String dep_nm = resultSet.getString("dep_nm");
 				String stuBir = resultSet.getString("stu_bir");
@@ -91,11 +92,11 @@ public class StudentDAO {
 
 			String sql = builder.toString();
 			PreparedStatement statement = connection.prepareStatement(sql);
-			statement.setInt(1, vo.getStuNo());
+			statement.setString(1, vo.getStuNo());
 			statement.setString(2, vo.getStuNm());
 			statement.setString(3, vo.getStuEm());
 			statement.setString(4, vo.getStuPneNo());
-			statement.setInt(5, vo.getStuGrd());
+			statement.setString(5, vo.getStuGrd());
 			statement.setString(6, vo.getStuAcdSt());
 			statement.setString(7, vo.getStuDep());
 			statement.setString(8, vo.getStuBir());

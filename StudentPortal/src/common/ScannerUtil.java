@@ -12,7 +12,14 @@ public class ScannerUtil {
 	}
 	
 	public static int nextInt() {
-		return Integer.parseInt(scanner.nextLine());
+		try {
+			return Integer.parseInt(scanner.nextLine());
+		} catch(Exception e) {
+			return -18;
+		}
 	}
 	
+	public static void close() {
+		scanner.close();
+	}
 }

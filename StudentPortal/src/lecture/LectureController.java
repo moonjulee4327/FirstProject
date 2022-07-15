@@ -2,11 +2,14 @@ package lecture;
 
 import java.util.List;
 
+import main.Main;
+import sign.SignVO;
+
 public class LectureController {
 	//필드
 	private static LectureController lectureController = new LectureController();
 	private LectureService lectureService = LectureService.getInstance();
-	
+	private static SignVO session = Main.getSession(); 
 	//생성자
 	private LectureController() {}
 	
@@ -22,11 +25,12 @@ public class LectureController {
 	public int LectureInsert(LectureVO vo) {
 		return lectureService.LectureInsert(vo);
 	}
+	
 	public List<LectureVO> audSelect() {
 		return lectureService.audSelect();	
 	}	
-	public int audInsert(LectureVO vo) {
-		return lectureService.audInsert(vo);
+	public int audInsert(int vo) {
+		return lectureService.audInsert(vo, session);
 	}	
 		
 }

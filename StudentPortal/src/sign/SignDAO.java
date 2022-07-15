@@ -20,10 +20,14 @@ public class SignDAO {
 	
 	
 	public int studentSign(SignVO vo) {
+		int result = 0;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
 		try {
 			DriverManager.registerDriver(new OracleDriver());
 			
-			Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.15:1521:xe", "StudentPortal", "java");
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.15:1521:xe", "StudentPortal", "java");
 			
 			StringBuilder builder = new StringBuilder();
 			builder.append(" SELECT");
@@ -34,26 +38,38 @@ public class SignDAO {
 			builder.append("     stu_no = ? ");
 			builder.append("     AND   TO_CHAR(stu_bir,'YYMMDD') = ? ");
 			String sql = builder.toString();
-			PreparedStatement statement = connection.prepareStatement(sql);
+			statement = connection.prepareStatement(sql);
 			statement.setObject(1, vo.getId());
 			statement.setObject(2, vo.getPw());	
-			ResultSet resultSet = statement.executeQuery();
+			resultSet = statement.executeQuery();
 			if(resultSet.next()) {
-				System.out.println(resultSet.getString("stu_nm"));
-				return 1;
+				System.out.print(resultSet.getString("stu_nm"));
+				result = 1;
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-		} 
-		return 0;
+		} finally {
+			try {
+				resultSet.close();
+				statement.close();
+				connection.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
 		
 	}
 	
 	public int professorSign(SignVO vo) {
+		int result = 0;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
 		try {
 			DriverManager.registerDriver(new OracleDriver());
 			
-			Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.15:1521:xe", "StudentPortal", "java");
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.15:1521:xe", "StudentPortal", "java");
 			
 			StringBuilder builder = new StringBuilder();
 			builder.append(" SELECT");
@@ -64,19 +80,26 @@ public class SignDAO {
 			builder.append("     pro_no =?");
 			builder.append("     AND   TO_CHAR(pro_bir,'YYMMDD') =?");
 			String sql = builder.toString();
-			PreparedStatement statement = connection.prepareStatement(sql);
+			statement = connection.prepareStatement(sql);
 			statement.setObject(1, vo.getId());
 			statement.setObject(2, vo.getPw());	
-			ResultSet resultSet = statement.executeQuery();
+			resultSet = statement.executeQuery();
 			if(resultSet.next()) {
-				System.out.println(resultSet.getString("pro_nm"));
-				return 2;
+				System.out.print(resultSet.getString("pro_nm"));
+				result = 1;
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			
+		}finally {
+			try {
+				resultSet.close();
+				statement.close();
+				connection.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		return 0;
+		return result;
 		
 	}
 	

@@ -2,22 +2,27 @@ package lecture;
 
 public class LectureVO {
 	//필드
-	private int lecNo;
+	private String lecNo;
 	private String lecSub;
 	private String lecDep;
 	private String yr;
-	private int sem;
+	private String sem;
 	private String lecTm;
 	private String lecWk;
 	//쿼리로 인한 증가
 	private String proNm;
 	private String rmNm;
 	private String countAdu;
-
+	
 	//생성자
 	public LectureVO() {}
 	
-	public LectureVO(int lecNo, String yr, int sem, String lecSub, String lecDep, String lecTm, String lecWk) {
+	public LectureVO(String lecNo, String lecSub) {
+		this.lecNo = lecNo;
+		this.lecSub = lecSub;
+	}
+		
+	public LectureVO(String lecNo, String yr, String sem, String lecSub, String lecDep, String lecTm, String lecWk) {
 		this.lecNo = lecNo;
 		this.lecSub = lecSub;
 		this.lecDep = lecDep;
@@ -26,8 +31,8 @@ public class LectureVO {
 		this.lecTm = lecTm;
 		this.lecWk = lecWk;
 	}
-
-	public LectureVO(int lecNo, String lecSub, String lecDep, String proNm, String yr, int sem, String lecTm, String lecWk,
+	
+	public LectureVO(String lecNo, String lecSub, String lecDep, String proNm, String yr, String sem, String lecTm, String lecWk,
 			 String rmNm, String countAdu) {
 		this.lecNo = lecNo;
 		this.lecSub = lecSub;
@@ -41,12 +46,13 @@ public class LectureVO {
 		this.countAdu = countAdu;
 	}
 
+	
 	//메소드
-	public int getLecNo() {
+	public String getLecNo() {
 		return lecNo;
 	}
 
-	public void setLecNo(int lecNo) {
+	public void setLecNo(String lecNo) {
 		this.lecNo = lecNo;
 	}
 
@@ -74,11 +80,11 @@ public class LectureVO {
 		this.yr = yr;
 	}
 
-	public int getSem() {
+	public String getSem() {
 		return sem;
 	}
 
-	public void setSem(int sem) {
+	public void setSem(String sem) {
 		this.sem = sem;
 	}
 
@@ -97,34 +103,16 @@ public class LectureVO {
 	public void setLecWk(String lecWk) {
 		this.lecWk = lecWk;
 	}
+
 	
-	public String getProNm() {
-		return proNm;
+	public String lectureString() {
+		return String.format("%s \t %s \t %s \t %s \t %s \t %s \t %s \t", lecNo, lecSub, lecDep, yr, sem, lecTm, lecWk);
+	}
+	
+	public String audString() {
+		return String.format("%s \t %s \t %s \t %s \t %s \t %s \t %s \t %s \t %s \t %s \t", lecNo, lecSub, lecDep, yr, sem, lecTm, lecWk, proNm, rmNm, countAdu);
 	}
 
-	public void setProNm(String proNm) {
-		this.proNm = proNm;
-	}
 
-	public String getRmNm() {
-		return rmNm;
-	}
-
-	public void setRmNm(String rmNm) {
-		this.rmNm = rmNm;
-	}
-
-	public String getCountAdu() {
-		return countAdu;
-	}
-
-	public void setCountAdu(String countAdu) {
-		this.countAdu = countAdu;
-	}
-
-	@Override
-	public String toString() {
-		return String.format("%s \t %s \t %s \t %s \t %s \t %s \t %s \t %s \t", lecNo, lecSub, lecDep, yr, sem, lecTm, lecWk, countAdu);
-	}
 	
 }

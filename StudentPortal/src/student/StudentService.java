@@ -29,7 +29,6 @@ public class StudentService {
 		try {
 			return studentDAO.insertStudent(vo);
 		} catch (Exception e) {
-			e.printStackTrace();
 			return 0;
 		}
 	}

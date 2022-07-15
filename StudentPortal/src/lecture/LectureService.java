@@ -2,6 +2,8 @@ package lecture;
 
 import java.util.List;
 
+import sign.SignVO;
+
 public class LectureService {
 	//필드
 	private static LectureService lectureService = new LectureService();
@@ -40,13 +42,14 @@ public class LectureService {
 		}
 	}
 	
-	public int audInsert(LectureVO vo) {
+	public int audInsert(int vo, SignVO session) {
 		try {
-			return lectureDAO.audInsert(vo);
+			return lectureDAO.audInsert(vo,session);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
 		}
 	}
 
+	
 }
