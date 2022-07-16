@@ -42,7 +42,7 @@ public class LectureService {
 		}
 	}
 	
-	public int audInsert(int vo, SignVO session) {
+	public int audInsert(String vo, SignVO session) {
 		try {
 			return lectureDAO.audInsert(vo,session);
 		} catch (Exception e) {
@@ -51,5 +51,12 @@ public class LectureService {
 		}
 	}
 
+	public List<LectureVO> audSelect(SignVO session) {
+	      try {
+	         return lectureDAO.audSelect(session);
+	      } catch (Exception e) {
+	         return null;
+	      }
+	   }
 	
 }

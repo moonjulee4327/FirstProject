@@ -29,8 +29,12 @@ public class LectureController {
 	public List<LectureVO> audSelect() {
 		return lectureService.audSelect();	
 	}	
-	public int audInsert(int vo) {
+	public int audInsert(String vo) {
 		return lectureService.audInsert(vo, session);
 	}	
-		
+	
+	public List<LectureVO> audSelectSession() {
+	    return lectureService.audSelect(session);   
+	}
+	
 }

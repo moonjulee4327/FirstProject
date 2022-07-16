@@ -6,6 +6,7 @@ import common.ProfessorMenu;
 import common.ScannerUtil;
 import common.StudentMenu;
 import lecture.LectureController;
+import rc.RcController;
 import sign.SignController;
 import sign.SignVO;
 import student.StudentController;
@@ -17,6 +18,7 @@ public class Main {
 	private static StudentController studentController = StudentController.getInstance();
 	private static LectureController lectureController = LectureController.getInstance();
 	private static ProfessorController professorController = ProfessorController.getInstance();
+	private static RcController rcController = RcController.getInstance();
 	public static void main(String[] args) {
 		new Main().run();
 		ScannerUtil.close();
@@ -46,10 +48,10 @@ public class Main {
 										stdMenu = view.auditSign(lectureController);
 										break;
 									case ALL_RECORD:
-										stdMenu = view.allRecord();
+										stdMenu = view.myLectureRecord(rcController);
 										break;
 									case AUDIT_HISTORY:
-										stdMenu = view.auditHistory();
+										stdMenu = view.auditHistory(lectureController);
 										break;
 									case HOME:
 										break;

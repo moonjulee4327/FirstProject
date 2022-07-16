@@ -10,6 +10,8 @@ import common.ScannerUtil;
 import common.StudentMenu;
 import lecture.LectureController;
 import lecture.LectureVO;
+import rc.RcController;
+import rc.RcVO;
 import sign.SignController;
 import sign.SignVO;
 import student.StudentController;
@@ -156,13 +158,6 @@ public class StudentPortalView {
 	}
 	
 	public AdminMenu lectureInsert(LectureController lectureController) {
-//		private int lecNo;
-//		private String lecSub;
-//		private String lecDep;
-//		private String yr;
-//		private int sem;
-//		private String lecTm;
-//		private String lecWk;
 		while(true) {
 			System.out.print(AdminMenu.LECTURE_INSERT.getMenuString());
 			System.out.println("입력을 취소하려면 과목번호에 0을 입력하세요.");
@@ -198,30 +193,47 @@ public class StudentPortalView {
 	//학생
 	public StudentMenu auditSign(LectureController lectureController) {
 		System.out.println("수강신청");
-		
+		Labal : 
+		while(true) {
 		List<LectureVO> selectLectures = lectureController.audSelect();
 		for(LectureVO vo : selectLectures) {
 			System.out.println(vo.audString());
 		}
 		System.out.println("강의 번호를 입력하시오");
-		int lecNo = ScannerUtil.nextInt();
+		String lecNo = ScannerUtil.nextLine();
+		List<LectureVO> list = lectureController.audSelectSession();
+		for(LectureVO vo : list) {
+			if(vo.getLecNo().equals(lecNo)) {
+				System.out.println("수강신청 불가");
+				continue Labal;
+			}
+		}
 		int audInsert = lectureController.audInsert(lecNo);
 		if(audInsert == 1) {
 			System.out.println("수강신청 완료");
-		}else {
-			System.out.println("수강신청 불가");
 		}
 		
+		return StudentMenu.HOME;
+		
+		}
+	}
+	public StudentMenu myLectureRecord(RcController rcController) {
+		System.out.println("성적조회");
+		
+		List<RcVO> rcStudentSelects = rcController.rcStudentSelect();
+		for(RcVO vo : rcStudentSelects) {
+			System.out.println(vo.rcStudentToString());
+		}
 		
 		return StudentMenu.HOME;
 	}
-	public StudentMenu allRecord() {
-		System.out.println("성적조회");
-		return StudentMenu.HOME;
-	}
-	public StudentMenu auditHistory() {
-		System.out.println("수강내역조회");
-		return StudentMenu.HOME;
+	public StudentMenu auditHistory(LectureController lectureController) {
+		System.out.println(StudentMenu.AUDIT_HISTORY.getMenuString());
+	    List<LectureVO> list = lectureController.audSelectSession();
+	     for(LectureVO vo : list) {
+	        System.out.println(vo);
+	    }
+	      return StudentMenu.HOME;
 	}
 	
 	//교수
