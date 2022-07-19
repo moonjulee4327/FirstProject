@@ -17,8 +17,14 @@ public class ProfessorService {
 		try {
 			return professorDAO.selectProfessor();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public ProfessorVO OneProfessor(ProfessorVO vo) {
+		try {
+			return professorDAO.selectOneProfessor(vo);
+		} catch (Exception e) {
 			return null;
 		}
 	}
@@ -26,7 +32,20 @@ public class ProfessorService {
 		try {
 		return professorDAO.insertProfessor(vo);
 		}catch (Exception e) {
-			e.printStackTrace();
+			return 0;
+		}
+	}
+	public int updateProfessor(ProfessorVO vo) {
+		try {
+			return professorDAO.updateProfessor(vo);
+		}catch (Exception e) {
+			return 0;
+		}
+	}
+	public int deleteProfessor(ProfessorVO vo) {
+		try {
+			return professorDAO.deleteProfessor(vo);
+		}catch (Exception e) {
 			return 0;
 		}
 	}

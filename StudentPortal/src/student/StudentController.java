@@ -2,6 +2,8 @@ package student;
 
 import java.util.List;
 
+import Professor.ProfessorVO;
+
 public class StudentController {
 	//필드
 	private static StudentController studentController = new StudentController();
@@ -18,8 +20,16 @@ public class StudentController {
 	public List<StudentVO> selectStudent() {
 		return studentService.selectStudent();
 	}
-	
+	public StudentVO selectOneStudent(StudentVO vo) {
+		return studentService.selectOneStudent(vo);
+	}
 	public int insertStudent(StudentVO vo) {
 		return studentService.insertStudent(vo);
+	}
+	public int updateStudent(StudentVO vo) {
+		return studentService.updateStudent(vo);
+	}
+	public int deleteStudent(StudentVO vo) {
+		return studentService.deleteStudent(vo);
 	}
 }
